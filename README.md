@@ -21,8 +21,30 @@ make docker_build
 docker run --gpus all -it -v $(pwd):/workspace/action_constrained_rl action_constrained_rl:latest
 ```
 
+## Available Algorithms
+The repository contains the following algorithms for action-constrained RL. For the details of the algorithms, please refer to our forthcoming paper.
+
+| TD3 Family | Description |
+|------------|-------------|
+| DPro       | TD3 with critic trained using projected actions |
+| DPro+      | DPro with the penalty term |
+| DPre       | TD3 with pre-projected actions |
+| DPre+      | DPre with penalty term |
+| DOpt       | TD3 with optimization layer |
+| DOpt+      | DOpt with penalty term |
+| NFW        | NFWPO with TD3 techniques (clipped double Q learning, target policy smoothing and delayed policy update) |
+| DAlpha     | TD3 with α-projection |
+| DRad       | TD3 with radial squashing |
+
+| SAC Family | Description |
+|------------|-------------|
+| SPre       | SAC with pre-projected actions |
+| SPre+      | SPre with penalty term |
+| SAlpha     | SAC with α-projection |
+| SRad       | SAC with radial squashing |
+
 ## Available Environment and Constraints
-We list the available environment and constraint combinations in the respository:
+The repository contains the following environment and constraint combinations:
 | Environment  | Name   | Constraint                                         |
 |--------------|--------|----------------------------------------------------|
 | Reacher      | R+N    | No additional constraint                           |

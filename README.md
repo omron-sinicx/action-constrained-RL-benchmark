@@ -33,12 +33,11 @@ We list the available environment and constraint combinations in the respository
 |              | R+M    | $$\sum_{i=1}^2 \max\{w_ia_i,0\}\leq 1.0$$             |
 |              | R+T    | $$a_1^2+2a_1(a_1+a_2)\cos \theta_2+(a_1+a_2)^2\leq 0.05$$|
 | HalfCheetah  | HC+O   | $$\sum_{i=1}^6\|w_ia_i\|\leq 20$$                     |
-|              | HC+MA  | $w_1a_1\sin (\theta_1+\theta_2+\theta_3)$          |
-|              |        | $+w_4a_4\sin (\theta_4+\theta_5+\theta_6)\leq 5$    |
-| Hopper       | H+M    | $\sum_{i=1}^3\max\{w_ia_i,0\}\leq 10$               |
-|              | H+O+S  | $\sum_{i=1}^3\|w_ia_i\|\leq 10$, $\sum_{i=1}^3 a_i^2\sin^2\theta_i\leq 0.1$ |
-| Walker2d     | W+M    | $\sum_{i=1}^6\max\{w_ia_i,0\}\leq 10$               |
-|              | W+O+S  | $\sum_{i=1}^6\|w_ia_i\|\leq 10$, $\sum_{i=1}^6 a_i^2\sin^2\theta_i\leq 0.1$ |
+|              | HC+MA  | $$w_1a_1\sin (\theta_1+\theta_2+\theta_3)+w_4a_4\sin (\theta_4+\theta_5+\theta_6)\leq 5$$    |
+| Hopper       | H+M    | $$\sum_{i=1}^3\max\{w_ia_i,0\}\leq 10$$               |
+|              | H+O+S  | $$\sum_{i=1}^3\|w_ia_i\|\leq 10, \sum_{i=1}^3 a_i^2\sin^2\theta_i\leq 0.1$$ |
+| Walker2d     | W+M    | $$\sum_{i=1}^6\max\{w_ia_i,0\}\leq 10$$               |
+|              | W+O+S  | $$\sum_{i=1}^6\|w_ia_i\|\leq 10, \sum_{i=1}^6 a_i^2\sin^2\theta_i\leq 0.1$$ |
 
 
 ## Example

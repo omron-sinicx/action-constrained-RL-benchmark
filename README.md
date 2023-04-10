@@ -29,4 +29,4 @@ When experiments with 1-10 seeds are logged in `logs/R-L2-DPre-1`, ..., `logs/R-
 ```
 python3 -m evaluation --log_dir logs/R-L2-DPre --prob_id R-L2 --algo_id DPre
 ```
-Then the evaluarion results are stored in `logs/R+L2-DPre`.
+Then the evaluarion results are stored in `logs/R-L2-DPre`.

@@ -1,8 +1,8 @@
 # Action Constrained Deep RL
-This repository contains various environments for aciton-constrained RL problems, as well as the implementation of various algorithms for action-constrained deep reinforcement learning. The code is organized for ease of use and experimentation.
+This repository contains various environments, as well as the implementation of various algorithms for action-constrained deep reinforcement learning. The code is organized for ease of use and experimentation.
 
 ## Installation
-We recommend docker-based installation.
+We recommend docker-based installation using Dockerfile provided.
 
 ### Building Image
 ```
@@ -22,7 +22,9 @@ docker run --gpus all -it -v $(pwd):/workspace/action_constrained_rl action_cons
 ```
 
 ## Available Algorithms
-The repository contains the following algorithms for action-constrained RL. For the details of the algorithms, please refer to our forthcoming paper.
+The repository contains the following algorithms for action-constrained RL. 
+Our implemetatin is built on top of [StableBaselines3](https://stable-baselines3.readthedocs.io/en/master).
+For the details of the algorithms, please refer to our forthcoming paper.
 
 | TD3 Family | Description |
 |------------|-------------|

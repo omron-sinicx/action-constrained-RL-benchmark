@@ -9,12 +9,6 @@ We recommend docker-based installation using Dockerfile provided.
 docker build -t action_constrained_rl --build-arg USERNAME=$(USERNAME) --build-arg USER_UID=$(USER_UID) .
 ```
 
-or 
-
-```
-make docker_build
-```
-
 ### Attaching to a Container
 
 ```

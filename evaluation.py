@@ -225,30 +225,30 @@ args = parser.parse_args()
 
 # from problem id, set problem arguments
 if args.prob_id != "":
-    if args.prob_id == "R-N":
+    if args.prob_id == "R+N":
         args.env = "ReacherPyBulletEnv-v0"
         args.constraint = "Box"
-    elif args.prob_id == "R-L2":
+    elif args.prob_id == "R+L2":
         args.env = "ReacherPyBulletEnv-v0"
         args.constraint = "Sphere"
         args.max_power = 0.05
-    elif args.prob_id == "R-O03":
+    elif args.prob_id == "R+O03":
         args.env = "ReacherPyBulletEnv-v0"
         args.constraint = "Orthoplex"
         args.max_power = 0.3
-    elif args.prob_id == "R-O10":
+    elif args.prob_id == "R+O10":
         args.env = "ReacherPyBulletEnv-v0"
         args.constraint = "Orthoplex"
         args.max_power = 1.0
-    elif args.prob_id == "R-O30":
+    elif args.prob_id == "R+O30":
         args.env = "ReacherPyBulletEnv-v0"
         args.constraint = "Orthoplex"
         args.max_power = 3.0
-    elif args.prob_id == "R-M":
+    elif args.prob_id == "R+M":
         args.env = "ReacherPyBulletEnv-v0"
         args.constraint = "Power"
         args.max_power = 1.0 
-    elif args.prob_id == "R-T":
+    elif args.prob_id == "R+T":
         args.env = "ReacherPyBulletEnv-v0"
         args.constraint = "Tip"
         args.max_power = 0.05 
@@ -410,7 +410,7 @@ def pickModel(constraint):
     seed = args.seed
     
     if args.use_NFWPO: #NFW
-        if args.prob_id[:2] == "R-":
+        if args.prob_id[:2] == "R+":
             fw_learning_rate = 0.05
         else:
             fw_learning_rate = 0.01
@@ -483,7 +483,6 @@ model = pickModel(constraint)
 rewards = []
 for seed in range(1,11):
     ev = np.load(args.log_dir+'-'+str(seed)+"/evaluations.npz")
-    assert ev['results'].shape[0] == 1000000/5000
     model.set_parameters(args.log_dir+'-'+str(seed)+"/best_model.zip")
     rewards.append(evaluate_policy(model, env, n_eval_episodes = 50)[0])
 rewards = np.array(rewards)

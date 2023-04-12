@@ -60,15 +60,15 @@ The repository contains the following environment and constraint combinations:
 
 ## Example
 ### Running
-To run the **DPre** algorithm on the **R-L2** task with a random seed of 1 and log the results to `logs/R+L2-DPre-1`, execute the following command:
+To run the **DPre** algorithm on the **R+L2** task with a random seed of 1 and log the results to `logs/R+L2-DPre-1`, execute the following command:
 ```
-python3 -m train --log_dir logs/R-L2-DPre-1 --prob_id R-L2 --algo_id DPre --seed 1
+python3 -m train --log_dir logs/R+L2-DPre-1 --prob_id R+L2 --algo_id DPre --seed 1
 ```
 Note that you can also explicitly specify tasks, algorithms, or hyperparameters using command-line arguments.
 
 ### Aggregating Results
-When experiments with 1-10 seeds are logged in `logs/R-L2-DPre-1`, ..., `logs/R-L2-DPre-10`, run:
+When experiments with 1-10 seeds are logged in `logs/R+L2-DPre-1`, ..., `logs/R+L2-DPre-10`, run:
 ```
-python3 -m evaluation --log_dir logs/R-L2-DPre --prob_id R-L2 --algo_id DPre
+python3 -m evaluation --log_dir logs/R+L2-DPre --prob_id R+L2 --algo_id DPre
 ```
-Then the evaluarion results are stored in `logs/R-L2-DPre`.
+Then the evaluarion results are stored in `logs/R+L2-DPre`.

@@ -1,5 +1,9 @@
 # Action Constrained Deep RL
+
+
 This repository contains various environments, as well as the implementation of various algorithms for action-constrained deep reinforcement learning. The code is organized for ease of use and experimentation.
+
+The detailed of description of these experiments can be found at [arXiv preprint](https://arxiv.org/abs/2304.08743).
 
 ## Installation
 We recommend docker-based installation using Dockerfile provided.
@@ -72,3 +76,13 @@ When experiments with 1-10 seeds are logged in `logs/R+L2-DPre-1`, ..., `logs/R+
 python3 -m evaluation --log_dir logs/R+L2-DPre --prob_id R+L2 --algo_id DPre
 ```
 Then the evaluarion results are stored in `logs/R+L2-DPre`.
+
+## Citation
+```
+@article{kasaura2023benchmarking,
+  title={Benchmarking Actor-Critic Deep Reinforcement Learning Algorithms for Robotics Control with Action Constraints},
+  author={Kasaura, Kazumi and Miura, Shuwa and Kozuno, Tadashi and Yonetani, Ryo and Hoshino, Kenta and Hosoe, Yohei},
+  journal={arXiv preprint arXiv:2304.08743},
+  year={2023},
+}
+```

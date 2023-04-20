@@ -3,7 +3,7 @@
 
 This repository contains various environments, as well as the implementation of various algorithms for action-constrained deep reinforcement learning. The code is organized for ease of use and experimentation.
 
-The detailed of description of these experiments can be found at [arXiv preprint](https://arxiv.org/abs/2304.08743).
+The detailed description of these experiments can be found at [arXiv preprint](https://arxiv.org/abs/2304.08743).
 
 ## Installation
 We recommend docker-based installation using Dockerfile provided.

@@ -92,21 +92,18 @@ class Constraint(ABC):
 class LinearConstraint(Constraint):
     """
     Abstract class for linear constraints with:
-        Ax = b,
         Cx <= d
-    When inequality representations are needed, A, b, C, and d are aggregated into Ex <= f
     """
+    
     def __init__(self, a_dim:int, s_dim:int = -1, proj_type: str = "QP"):
         super().__init__(a_dim, s_dim)
         self.proj_type = proj_type
         
-    @abstractmethod
     def E(self, state):
-        pass
-  
-    @abstractmethod
+        return self.C(state)
+
     def f(self, state):
-        pass
+        return self.d(state)
 
     def C(self, state):
         if isinstance(state, np.ndarray):
@@ -143,12 +140,6 @@ class LinearConstraint(Constraint):
         C = self.C(state)
         d = self.d(state)
         return calc_chebyshev_center(C,d)
-
-    def A(self, state):
-        None
-
-    def b(self, state):
-        None
 
     def isConstraintSatisfied(self, state, a, err=1e-1):
         if state.ndim == 2:
@@ -192,21 +183,28 @@ class LinearConstraint(Constraint):
 
         
 if __name__ == "__main__":
-    from ..half_cheetah.half_cheetah_dynamic_constraint import HalfCheetahDynamicConstraint
-    cons_pq = HalfCheetahDynamicConstraint("QP")
-    cons_al = HalfCheetahDynamicConstraint("alpha")
-    cons_sh = HalfCheetahDynamicConstraint("shrinkage")
+    from .power_constraint import PowerConstraint
+    offset = 11
+    scale = (1., 1., 1., 1., 1., 1.)
+    indices = list(range(offset, offset+len(scale)))
+    s_dim = 17
+    cons_pq = PowerConstraint(indices, scale, 20., s_dim, proj_type = "QP")
+    cons_al = PowerConstraint(indices, scale, 20., s_dim, proj_type = "alpha")
+    cons_sh = PowerConstraint(indices, scale, 20., s_dim, proj_type = "shrinkage")
     from ..nn.opt_layer.opt_layer import OptLayer
     from ..nn.additional_layers.alpha_projection import AlphaProjectionLayer
-    from ..nn.additional_layers.radial_shrinkage import ShrinkageLayer
+    from ..nn.additional_layers.radial_squash import SquashLayer
     layer_pq = OptLayer(cons_pq)
     layer_al = AlphaProjectionLayer(cons_pq)
-    layer_sh = ShrinkageLayer(cons_pq)
+    layer_sh = SquashLayer(cons_pq)
     actions = th.rand(100, 6)
     states = th.rand(100, 17)
+    centers = th.zeros(100, 6)
+    for i in range(100):
+        centers[i] = th.tensor(cons_pq.get_center(states[i].numpy()))
     y_pq = layer_pq(actions, states)
-    y_al = layer_al(actions, states)
-    y_sh = layer_sh(actions, states)
+    y_al = layer_al(actions, states, centers)
+    y_sh = layer_sh(actions, states, centers)
     for i in range(100):
         state = states[i].numpy()
         action = actions[i].numpy()
